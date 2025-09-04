@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+    - main
+    - release/*
+    - Vmcodde1
+Jobs:
+     
+  prashant job:
+  name: runner
+  runs-on: ubuntu-latest
+
+-name: Azure Login
+  uses:Azure/login@v2.3.0 
+  with:
+    client-id: 1fe253d8-3614-4b7f-85b1-ab13601c0f92
+    tenant-id: defb5fbe-74e0-453c-9d33-594936bf34c5
+    subscription-id: 81cc1915-8d88-419e-8fa3-0178811761bd
+    auth-type:  SERVICE_PRINCIPAL
+
+- name: HashiCorp - Setup Terraform
+  uses: hashicorp/setup-terraform@v2.0.3
+  with:
+    terraform_version: latest
+- name: I am prashant verma please tell me the version of terraform
+  run: terraform-version
+- name: I am prashant verma terraform init chalana hai
+  run: terraform init
+  
+    
+          
+          
+
+
+ 
