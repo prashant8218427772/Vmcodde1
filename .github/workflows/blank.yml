@@ -5,10 +5,15 @@ on:
     - release/*
     - Vmcodde1
 Jobs:
-     
   prashant job:
   name: runner
   runs-on: ubuntu-latest
+  permissions:
+   id-token: write
+   contents: read
+  steps:
+  -name: checkout
+   uses:actions/checkout@v5.0.0
 
 -name: Azure Login
  uses:Azure/login@v2.3.0 
@@ -18,11 +23,11 @@ with:
     subscription-id: 81cc1915-8d88-419e-8fa3-0178811761bd
     auth-type:  SERVICE_PRINCIPAL
     
-    
-- name: HashiCorp - Setup Terraform
+- name:HashiCorp - Setup Terraform
+
   uses: hashicorp/setup-terraform@v2.0.3 
  
-   with:
+ with:
   terraform_version: latest
 - name: I am prashant verma please tell me the version of terraform
   run: terraform-version
